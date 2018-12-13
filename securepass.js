@@ -73,7 +73,7 @@ function numberCheck(password){
 
 
 //returns true or false if there is a special character in the password
-function specialCheck(check){
+function specialCheck(password){
 
   for(i = 0; i = password.length; i++){
 
@@ -96,7 +96,7 @@ function specialCheck(check){
 
 
 function passedAllChecks(){
-
+  return (lengthCheck(password) && upperCaseCheck(password) && lowerCaseCheck(password) && numberCheck(password) && specialCheck(password))
 }
 
 
@@ -109,6 +109,23 @@ function passedAllChecks(){
 
 //returns a string which represents the grade for your password
 function grade(password){
-
-
+ if (lengthCheck(password) === false){
+   return "very bad";
+ }
+else if((upperCaseCheck(password) && lowerCaseCheck(password)) === false){
+   return "bad";
+ }
+ else if (numberCheck(password) === true){
+   return "okay";
+ }
+ else if (specialCheck(password) === true){
+    return "good";
+ }
+ else if (passedAllChecks(password) === true){
+   return "great";
+ }
+ else if (password.length =< 20){
+   return "super";
+ }
 }
+
